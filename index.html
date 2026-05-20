@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sofia Chicaiza // Mechatronics Engineer</title>
+<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-on-surface": "#edf2f1",
+                "on-primary": "#ffffff",
+                "surface": "#f5faf9",
+                "surface-variant": "#dee3e3",
+                "on-tertiary-fixed-variant": "#404756",
+                "surface-container-low": "#f0f5f4",
+                "surface-container-high": "#e4e9e8",
+                "on-tertiary-container": "#3b4251",
+                "surface-dim": "#d6dbda",
+                "outline": "#4d5464",
+                "on-primary-fixed-variant": "#004f50",
+                "secondary-fixed": "#ffd9e3",
+                "primary-fixed-dim": "#67d8d7",
+                "primary": "#4bbfbf",
+                "tertiary-fixed": "#dce2f6",
+                "background": "#fbf9f4",
+                "on-background": "#4d5464",
+                "secondary": "#f288af",
+                "error": "#ba1a1a",
+                "secondary-container": "#fe92b9",
+                "tertiary": "#575e6f",
+                "surface-tint": "#006a6a",
+                "on-primary-container": "#004a4a",
+                "inverse-primary": "#67d8d7",
+                "on-surface": "#4d5464",
+                "surface-container": "#eaefee",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed-variant": "#7b284c",
+                "on-primary-fixed": "#002020",
+                "primary-fixed": "#85f4f4",
+                "secondary-fixed-dim": "#ffb0ca",
+                "outline-variant": "#bcc9c8",
+                "error-container": "#ffdad6",
+                "surface-bright": "#f5faf9",
+                "inverse-surface": "#2c3131",
+                "on-surface-variant": "#3d4949",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-tertiary-fixed": "#141c29",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed": "#3e001f",
+                "tertiary-fixed-dim": "#c0c6d9",
+                "surface-container-highest": "#dee3e3",
+                "tertiary-container": "#a7aec1",
+                "primary-container": "#4bbfbf",
+                "on-secondary-container": "#79264a"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "margin-desktop": "64px",
+                "gutter": "24px",
+                "base": "8px",
+                "container-max": "1280px",
+                "margin-mobile": "20px"
+        },
+        "fontFamily": {
+                "body-md": [
+                        "Inter"
+                ],
+                "technical-mono": [
+                        "Inter"
+                ],
+                "headline-sm": [
+                        "Space Grotesk"
+                ],
+                "display-lg-mobile": [
+                        "Space Grotesk"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Space Grotesk"
+                ],
+                "display-lg": [
+                        "Space Grotesk"
+                ],
+                "label-caps": [
+                        "Space Grotesk"
+                ],
+                "data-label": ["Inter", "monospace"],
+                "data-value": ["Inter", "monospace"]
+        },
+        "fontSize": {
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "technical-mono": [
+                        "14px",
+                        {
+                                "lineHeight": "1.5",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-sm": [
+                        "24px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "40px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "32px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg": [
+                        "64px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "data-label": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                "data-value": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body {
+            background-color: #fbf9f4;
+        }
+
+        .blueprint-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(77, 84, 100, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(77, 84, 100, 0.1) 1px, transparent 1px);
+        }
+        
+        .tech-border {
+            border: 1px solid #4d5464;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card {
+            border: 1px solid #4d5464;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #f288af;
+            box-shadow: 0 10px 30px -10px rgba(242, 136, 175, 0.1);
+        }
+
+        .project-card:hover .project-number {
+            color: #f288af;
+        }
+
+        .skill-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-badge::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(transparent, transparent, theme('colors.primary-container'), transparent, transparent);
+            transform: rotate(45deg) translateY(-100%);
+            transition: transform 0.6s ease;
+            opacity: 0.1;
+        }
+        
+        .skill-badge:hover::after {
+            transform: rotate(45deg) translateY(100%);
+        }
+        
+        .iframe-container {
+            width: 100%;
+            height: 300px;
+            background-color: theme('colors.surface-container');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #4d5464;
+            position: relative;
+        }
+        
+        .iframe-container::before {
+            content: 'MEDIA CONTAINER // AWAITING STREAM';
+            font-family: 'Inter', monospace;
+            font-size: 12px;
+            color: theme('colors.on-surface-variant');
+            position: absolute;
+        }
+
+        .section-title {
+            letter-spacing: -0.02em;
+        }
+
+        .tech-heading {
+            border-bottom: 1px solid #4d5464;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen blueprint-grid">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-[40px] h-[80px] bg-background/90 backdrop-blur-md border-b border-outline">
+<div class="text-headline-md font-headline-md font-bold text-on-surface tracking-tighter uppercase">
+            SOFIA CHICAIZA
+        </div>
+<nav class="hidden md:flex gap-gutter">
+<a class="text-data-label font-data-label text-primary font-bold border-b-2 border-primary pb-1" href="#about">ABOUT ME</a>
+<a class="text-data-label font-data-label text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#projects">PROJECTS</a>
+<a class="text-data-label font-data-label text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#contact">CONTACT</a>
+</nav>
+<div class="flex gap-4">
+<button class="text-primary hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+<button class="text-primary hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</header>
+<main class="pt-[80px] pb-12 px-[40px] max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center border-b border-outline mb-12 overflow-hidden -mx-[40px] px-[40px]" id="hero">
+<!-- Giant Background Text -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+<span class="text-[12vw] font-display-lg text-outline opacity-5 uppercase select-none tracking-tighter whitespace-nowrap">PORTAFOLIO</span>
+</div>
+<!-- Content -->
+<div class="relative z-10 w-full max-w-container-max mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 pb-20">
+<!-- Left -->
+<div class="flex-1 text-right hidden lg:block">
+<h2 class="text-[40px] leading-tight font-display-lg text-primary uppercase tracking-tight">INGENIERÍA<br/>MECATRÓNICA</h2>
+</div>
+<!-- Center -->
+<div class="w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full bg-surface-container flex items-center justify-center relative shrink-0">
+<div class="w-full h-full rounded-full border border-outline flex items-center justify-center overflow-hidden bg-background">
+<span class="material-symbols-outlined text-[150px] text-outline">person</span>
+</div>
+<!-- Decorative rings -->
+<div class="absolute inset-[-20px] border border-dashed border-primary/40 rounded-full animate-[spin_30s_linear_infinite]"></div>
+<div class="absolute inset-[-40px] border border-outline/20 rounded-full"></div>
+</div>
+<!-- Right -->
+<div class="flex-1 text-left hidden lg:block">
+<h2 class="text-[40px] leading-tight font-display-lg text-secondary uppercase tracking-tight">MANTENIMIENTO &amp;<br/>AUTOMATIZACIÓN</h2>
+</div>
+<!-- Mobile view of pillars -->
+<div class="flex flex-col gap-6 text-center lg:hidden w-full mt-8">
+<h2 class="text-headline-md font-display-lg text-primary uppercase tracking-tight">INGENIERÍA MECATRÓNICA</h2>
+<h2 class="text-headline-md font-display-lg text-secondary uppercase tracking-tight">MANTENIMIENTO &amp; AUTOMATIZACIÓN</h2>
+</div>
+</div>
+<!-- CTA -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+<span class="text-data-label font-data-label text-on-surface-variant uppercase tracking-widest">Desliza para ver más</span>
+<span class="material-symbols-outlined text-primary animate-bounce">arrow_downward</span>
+</div>
+</section>
+<!-- About Me Section (2 columns) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12 border-b border-outline pb-12 pt-12" id="about">
+<!-- Left Column: Photo & Contact -->
+<div class="lg:col-span-4 flex flex-col items-center gap-12">
+<div class="w-[300px] h-[300px] rounded-full border border-outline overflow-hidden bg-surface-container flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[100px] text-outline">person</span>
+</div>
+<div class="w-full">
+<h1 class="text-display-lg-mobile font-display-lg-mobile text-on-surface mb-2 text-center uppercase tracking-widest font-light">
+            SOFIA CHICAIZA
+        </h1>
+<p class="text-body-md font-body-md text-primary text-center mb-8 font-light tracking-wide uppercase">
+            Ingeniera en Mecatrónica
+        </p>
+<div class="flex flex-col gap-4 font-data-label text-data-label text-on-surface-variant w-full max-w-[300px] mx-auto">
+<div class="flex items-center gap-6 border-b border-outline pb-3">
+<span class="material-symbols-outlined text-primary text-sm">mail</span>
+                sofiakch03@gmail.com
+            </div>
+<div class="flex items-center gap-6 border-b border-outline pb-3">
+<span class="material-symbols-outlined text-primary text-sm">call</span>
+                0963797597
+            </div>
+<div class="flex items-center gap-6 border-b border-outline pb-3">
+<span class="material-symbols-outlined text-primary text-sm">link</span>
+                linkedin.com/in/sofia-chicaiza
+            </div>
+<div class="flex items-center gap-6 pb-3">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+                Quito, Ecuador
+            </div>
+</div>
+</div>
+</div>
+<!-- Right Column: SOBRE MÍ, Edu, Exp, Skills -->
+<div class="lg:col-span-8 flex flex-col gap-12">
+<div>
+<h2 class="text-display-lg leading-none font-display-lg text-on-surface section-title mb-6">SOBRE MÍ</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant font-light max-w-3xl leading-relaxed">
+            Profesional en Ingeniería Mecatrónica con enfoque en mantenimiento industrial, automatización de procesos y diseño de sistemas electromecánicos. Experiencia en implementación de soluciones tecnológicas para optimización de recursos y mejora continua en entornos industriales. Apasionada por la robótica y el control de sistemas.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Education -->
+<div>
+<div class="flex items-center gap-3 tech-heading">
+<span class="material-symbols-outlined text-primary">school</span>
+<h3 class="text-headline-md font-headline-md text-on-surface uppercase tracking-wider text-xl">Educación</h3>
+</div>
+<div class="mb-6">
+<p class="text-body-md font-bold text-on-surface mb-1">• Universidad de las Fuerzas Armadas ESPE</p>
+<p class="text-body-md text-on-surface-variant font-light pl-4">Ingeniería en Mecatrónica</p>
+<p class="text-data-value font-data-value text-primary pl-4 mt-1">Graduada (2025)</p>
+</div>
+</div>
+<!-- Experience -->
+<div>
+<div class="flex items-center gap-3 tech-heading">
+<span class="material-symbols-outlined text-primary">work</span>
+<h3 class="text-headline-md font-headline-md text-on-surface uppercase tracking-wider text-xl">Experiencia</h3>
+</div>
+<div class="mb-6">
+<p class="text-body-md font-bold text-on-surface mb-1">• Electronium</p>
+<p class="text-body-md text-on-surface-variant font-light pl-4">Ingeniera de Proyectos Mecatrónicos</p>
+<p class="text-data-value font-data-value text-primary pl-4 mt-1">Presente</p>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface mb-1">• IMT Soluciones</p>
+<p class="text-body-md text-on-surface-variant font-light pl-4">Pasante de Ingeniería</p>
+<p class="text-data-value font-data-value text-primary pl-4 mt-1">2023</p>
+</div>
+</div>
+<!-- Skills -->
+<div class="md:col-span-2 mt-6">
+<div class="flex items-center gap-3 tech-heading">
+<span class="material-symbols-outlined text-primary">construction</span>
+<h3 class="text-headline-md font-headline-md text-on-surface uppercase tracking-wider text-xl">Habilidades</h3>
+</div>
+<div class="flex flex-wrap gap-3">
+<span class="skill-badge px-3 py-1 border border-outline text-on-surface-variant font-data-label text-data-label bg-surface-container">PLC Siemens</span>
+<span class="skill-badge px-3 py-1 border border-outline text-on-surface-variant font-data-label text-data-label bg-surface-container">TIA Portal</span>
+<span class="skill-badge px-3 py-1 border border-outline text-on-surface-variant font-data-label text-data-label bg-surface-container">LabVIEW</span>
+<span class="skill-badge px-3 py-1 border border-outline text-on-surface-variant font-data-label text-data-label bg-surface-container">AutoCAD</span>
+<span class="skill-badge px-3 py-1 border border-outline text-on-surface-variant font-data-label text-data-label bg-surface-container">SolidWorks</span>
+<span class="skill-badge px-3 py-1 border border-outline text-on-surface-variant font-data-label text-data-label bg-surface-container">MQTT</span>
+<span class="skill-badge px-3 py-1 border border-outline text-on-surface-variant font-data-label text-data-label bg-surface-container">Python</span>
+<span class="skill-badge px-3 py-1 border border-outline text-on-surface-variant font-data-label text-data-label bg-surface-container">ESP32</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Grid -->
+<section class="mb-12" id="projects">
+<div class="flex items-center gap-3 mb-12 border-b border-outline pb-3">
+<h2 class="text-display-lg leading-none font-display-lg text-on-surface section-title">/PORTFOLIO/</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-outline">
+<!-- Card 1 -->
+<div class="project-card bg-background flex flex-col p-12 border-b border-r border-outline">
+<div class="flex items-end gap-3 mb-12">
+<span class="text-display-lg leading-none font-light text-secondary project-number transition-colors duration-300 font-display-lg">/01/</span>
+<h3 class="text-headline-md font-headline-md text-on-surface font-light tracking-wide pb-2">Prototipo Robótico - Detección de Fatiga</h3>
+</div>
+<div class="iframe-container mb-6">
+<!-- 3D/CAD EMBED -->
+</div>
+<div class="font-data-value text-data-value text-on-surface-variant flex gap-3 mt-auto pt-3 border-t border-outline">
+<span class="uppercase">Python</span>
+<span class="uppercase">• OpenCV</span>
+<span class="uppercase">• Hardware</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="project-card bg-background flex flex-col p-12 border-b border-r border-outline">
+<div class="flex items-end gap-3 mb-12">
+<span class="text-display-lg leading-none font-light text-secondary project-number transition-colors duration-300 font-display-lg">/02/</span>
+<h3 class="text-headline-md font-headline-md text-on-surface font-light tracking-wide pb-2">Diseño CAD de Componentes Mecánicos</h3>
+</div>
+<div class="iframe-container mb-6">
+<!-- 3D/CAD EMBED -->
+</div>
+<div class="font-data-value text-data-value text-on-surface-variant flex gap-3 mt-auto pt-3 border-t border-outline">
+<span class="uppercase">SolidWorks</span>
+<span class="uppercase">• AutoCAD</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="project-card bg-background flex flex-col p-12 border-b border-r border-outline">
+<div class="flex items-end gap-3 mb-12">
+<span class="text-display-lg leading-none font-light text-secondary project-number transition-colors duration-300 font-display-lg">/03/</span>
+<h3 class="text-headline-md font-headline-md text-on-surface font-light tracking-wide pb-2">Sistema Automatizado Industrial &amp; HMI</h3>
+</div>
+<div class="iframe-container mb-6">
+<!-- 3D/CAD EMBED -->
+</div>
+<div class="font-data-value text-data-value text-on-surface-variant flex gap-3 mt-auto pt-3 border-t border-outline">
+<span class="uppercase">TIA Portal</span>
+<span class="uppercase">• Siemens S7</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="project-card bg-background flex flex-col p-12 border-b border-r border-outline">
+<div class="flex items-end gap-3 mb-12">
+<span class="text-display-lg leading-none font-light text-secondary project-number transition-colors duration-300 font-display-lg">/04/</span>
+<h3 class="text-headline-md font-headline-md text-on-surface font-light tracking-wide pb-2">Monitoreo MQTT &amp; Modbus</h3>
+</div>
+<div class="iframe-container mb-6">
+<!-- 3D/CAD EMBED -->
+</div>
+<div class="font-data-value text-data-value text-on-surface-variant flex gap-3 mt-auto pt-3 border-t border-outline">
+<span class="uppercase">ESP32</span>
+<span class="uppercase">• MQTT</span>
+<span class="uppercase">• IoT</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-[40px] flex flex-col md:flex-row justify-between items-center gap-6 bg-background border-t border-outline" id="contact">
+<div class="text-data-label font-data-label font-bold text-on-surface-variant">
+            © 2024 SOFIA CHICAIZA // MECHATRONICS ENGINEER
+        </div>
+<div class="flex gap-6">
+<a class="text-data-label font-data-label text-on-surface-variant hover:text-primary transition-colors duration-300 hover:underline hover:underline-offset-4" href="#">GITHUB</a>
+<a class="text-data-label font-data-label text-on-surface-variant hover:text-primary transition-colors duration-300 hover:underline hover:underline-offset-4" href="#">LINKEDIN</a>
+<a class="text-data-label font-data-label text-on-surface-variant hover:text-primary transition-colors duration-300 hover:underline hover:underline-offset-4" href="#">EMAIL</a>
+</div>
+</footer>
+</body></html>
