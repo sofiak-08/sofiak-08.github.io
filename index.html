@@ -1,0 +1,647 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="es" style=""><head></head><body class="precision-grid">```html
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sofía Chicaiza // Ingeniería Mecatrónica de Precisión</title>
+<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "secondary": "#0058be",
+                        "on-secondary": "#ffffff",
+                        "background": "#fcf8fa",
+                        "on-background": "#1b1b1d",
+                        "surface": "#fcf8fa",
+                        "on-surface": "#1b1b1d",
+                        "surface-variant": "#e4e2e4",
+                        "on-surface-variant": "#45464d",
+                        "outline": "#76777d",
+                        "outline-variant": "#c6c6cd",
+                        "primary-container": "#131b2e",
+                        "on-primary-container": "#7c839b",
+                        "secondary-container": "#2170e4",
+                        "on-secondary-container": "#fefcff",
+                        "surface-container": "#f0edef",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container-high": "#eae7e9",
+                        "surface-container-highest": "#e4e2e4",
+                        "surface-dim": "#dcd9db",
+                        "slate-deep": "#0f172a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Manrope", "sans-serif"],
+                        "mono-data": ["JetBrains Mono", "monospace"],
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fcf8fa;
+            color: #1b1b1d;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .precision-grid {
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+        }
+
+        .premium-card {
+            background: #ffffff;
+            border: 1px solid #e4e2e4;
+            transition: all 0.3s ease;
+        }
+
+        .premium-card:hover {
+            border-color: #0f172a;
+            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.1);
+        }
+
+        .nav-link {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #45464d;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: #0f172a;
+        }
+
+        .img-placeholder {
+            background: #f6f3f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #76777d;
+        }
+
+        .expand-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+        .expand-content.expanded {
+            max-height: 2000px;
+            opacity: 1;
+        }
+
+        .badge-skill {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 12px;
+            background: #f0edef;
+            color: #1b1b1d;
+            border-radius: 4px;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #7c839b;
+        }
+
+        .hero-title {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+    </style>
+<script>
+        function toggleProject(id) {
+            const content = document.getElementById(id + '-expand');
+            const btnText = document.getElementById('btn-text-' + id.replace('project-', ''));
+            const isExpanded = content.classList.toggle('expanded');
+            
+            if (isExpanded) {
+                btnText.innerText = 'CONTRAER DETALLES';
+            } else {
+                if (id === 'project-01') btnText.innerText = 'VER INGENIERÍA Y APLICACIÓN INDUSTRIAL';
+                if (id === 'project-CAD') btnText.innerText = 'VER INGENIERÍA DE DISEÑO CAD';
+                if (id === 'project-03') btnText.innerText = 'VER DETALLES DE GESTIÓN Y KPIS';
+                if (id === 'project-04') btnText.innerText = 'VER DETALLES DE VISIÓN';
+            }
+        }
+    </script>
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 lg:px-12 bg-white/90 backdrop-blur-md border-b border-outline-variant h-20">
+<div class="flex items-center gap-10">
+<div class="font-extrabold text-slate-deep tracking-tighter uppercase cursor-pointer text-2xl" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            SOFÍA CHICAIZA
+        </div>
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant/30 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="font-bold tracking-widest text-on-surface-variant uppercase text-[9px] font-mono-data">En Línea&nbsp; ·&nbsp; V1</span>
+</div>
+</div>
+<nav class="hidden md:flex gap-10">
+<a class="nav-link active" href="#hero">INICIO</a>
+<a class="nav-link" href="#about">PERFIL</a>
+<a class="nav-link" href="#tech">HABILIDADES</a>
+<a class="nav-link" href="#projects">PROYECTOS</a>
+</nav>
+<div>
+<a class="inline-flex items-center gap-2 px-6 py-2.5 bg-slate-deep text-white text-xs font-bold tracking-widest rounded-lg hover:bg-black transition-colors" href="https://drive.google.com/drive/folders/1qMv1Psq--yoMl9AKQwqnz_N782xeSHHF" target="_blank">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+            VER CURRÍCULUM
+        </a>
+</div>
+</header>
+<main class="pt-20 px-6 lg:px-12 max-w-[1440px] mx-auto">
+<!-- Hero Section -->
+<section class="min-h-[85vh] grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-16" id="hero">
+<div class="lg:col-span-6 space-y-8">
+<div class="space-y-4">
+<p class="section-tag">INGENIERÍA MECATRÓNICA // IND 4.0</p>
+<h1 class="hero-title text-6xl lg:text-8xl text-slate-deep uppercase">portafolio&nbsp;</h1>
+</div>
+<p class="text-xl lg:text-2xl text-on-surface-variant leading-relaxed max-w-xl"></p><p class="" data-pm-slice="1 1 []">Transformo requerimientos en <strong class="font-bold text-slate-deep">sistemas tecnológicos tangibles</strong>. Me encargo de la <strong class="font-bold text-slate-deep">arquitectura de la propuesta</strong>, el <strong class="font-bold text-slate-deep">modelado CAD parametrizado</strong>, la <strong class="font-bold text-slate-deep">selección de componentes críticos</strong> y la <strong class="font-bold text-slate-deep">integración física del sistema</strong>.</p><p class=""></p>
+<div class="flex flex-wrap gap-4 pt-4">
+<a class="px-8 py-4 border-2 border-slate-deep font-bold text-slate-deep text-sm tracking-widest hover:bg-slate-deep hover:text-white transition-all rounded-lg" href="#projects">
+                    EXPLORAR PROYECTOS
+                </a>
+<a class="px-8 py-4 bg-surface-container-high font-bold text-on-surface text-sm tracking-widest hover:bg-surface-container-highest transition-all rounded-lg" href="#footer">
+                    CONTACTO
+                </a>
+</div>
+</div>
+<div class="lg:col-span-6 relative">
+<div class="aspect-square bg-white border border-outline-variant p-4 rounded-2xl shadow-xl relative overflow-hidden group">
+<div class="w-full h-full img-placeholder rounded-xl">
+<span class="material-symbols-outlined text-slate-deep/10 text-[200px] absolute">settings_suggest</span>
+<div class="relative z-10 text-center">
+<span class="material-symbols-outlined text-slate-deep text-6xl mb-4">memory</span>
+<p class="font-mono-data text-[10px] tracking-widest font-bold">CORE_ENGINEERING_INTERFACE</p>
+</div>
+</div>
+</div>
+<!-- Refined accents -->
+<div class="absolute -top-6 -right-6 w-32 h-32 bg-slate-deep/5 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -bottom-10 -left-10 w-48 h-48 bg-slate-deep/5 rounded-full blur-3xl -z-10"></div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24 border-t border-outline-variant/30" id="about">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<div class="lg:col-span-4 sticky top-32">
+<div class="p-2 border border-outline-variant bg-white rounded-xl shadow-sm">
+<div class="aspect-[4/5] img-placeholder rounded-lg">
+<span class="material-symbols-outlined text-outline/30 text-8xl">person_outline</span>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-3xl font-extrabold text-slate-deep">SOFÍA CHICAIZA</h3>
+<p class="text-sm font-bold text-on-surface-variant tracking-[0.2em] uppercase mt-2">Ingeniera Mecatrónica</p><a href="#footer" class="mt-8 inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-deep text-white font-display font-bold text-xs tracking-widest uppercase rounded-lg hover:bg-black transition-all w-full md:w-auto">
+    <span class="">CONTACTAR AHORA</span>
+    <span class="material-symbols-outlined text-[18px]">mail</span>
+</a>
+</div>
+</div>
+<div class="lg:col-span-8">
+<div class="space-y-12">
+<div class="space-y-6">
+<p class="section-tag">PERFIL PROFESIONAL</p><p class="text-lg lg:text-xl text-on-surface-variant leading-relaxed mt-6">Combino <strong class="font-bold text-slate-deep">criterio técnico</strong> y <strong class="font-bold text-slate-deep">visión de proyecto</strong> para transformar requerimientos en <strong class="font-bold text-slate-deep">soluciones mecatrónicas funcionales</strong>. Mi enfoque abarca desde la <strong class="font-bold text-slate-deep">arquitectura del sistema</strong> y el <strong class="font-bold text-slate-deep">modelado CAD parametrizado</strong> hasta la <strong class="font-bold text-slate-deep">selección de componentes</strong> y la puesta en marcha, priorizando siempre la <strong class="font-bold text-slate-deep">reducción de fallas</strong>, la <strong class="font-bold text-slate-deep">continuidad operativa</strong> y el <strong class="font-bold text-slate-deep">impacto real en producción</strong>.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 border-t border-outline-variant/30">
+<div class="space-y-8">
+<div>
+<h4 class="text-xs font-bold text-slate-deep uppercase tracking-widest mb-6">FORMACIÓN</h4>
+<div class="border-l-2 border-slate-deep pl-6 py-1">
+<p class="text-lg font-bold"><a href="https://dcem.espe.edu.ec/" target="_blank" class="hover:text-secondary transition-colors duration-200">Universidad de las Fuerzas Armadas ESPE</a></p>
+<p class="text-sm text-on-surface-variant mt-1">Ingeniería en Mecatrónica</p>
+<p class="text-[10px] font-bold text-slate-deep/60 mt-3 uppercase font-mono-data">GRADUADA // 2025</p>
+</div>
+</div>
+<div>
+<h4 class="text-xs font-bold text-slate-deep uppercase tracking-widest mb-6">INVESTIGACIÓN</h4>
+<div class="border-l-2 border-outline-variant pl-6 py-1">
+<p class="text-lg font-bold"><a href="https://digimedia.pt/event/jauti-2025/" target="_blank" class="hover:text-secondary transition-colors duration-200">Congreso JAUTI 2025</a></p>
+<p class="text-sm text-on-surface-variant mt-1">Ponente Internacional - Elaboración de Paper Científico</p>
+<p class="text-[10px] font-bold text-emerald-600 mt-3 uppercase font-mono-data">ACTIVA // NOV 2025</p>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div>
+<h4 class="text-xs font-bold text-slate-deep uppercase tracking-widest mb-6">EXPERIENCIA</h4>
+<div class="space-y-6">
+<div class="border-l-2 border-slate-deep pl-6 py-1">
+<p class="text-lg font-bold"><a class="integration-link" href="https://www.electhronium.com/" target="_blank" style="--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; transition: color 0.3s, border-bottom 0.3s; font-family: &quot;Space Grotesk&quot;, sans-serif; font-size: 16px; background-color: rgb(245, 250, 249);">Electronium</a></p>
+<p class="text-sm text-on-surface-variant mt-1">Ingeniera de Proyectos Mecatrónicos</p>
+<p class="text-[10px] font-bold text-slate-deep/60 mt-3 uppercase font-mono-data">ACTUALIDAD</p>
+</div>
+<div class="border-l-2 border-outline-variant pl-6 py-1">
+<p class="text-lg font-bold"><a href="https://ingenieriaimt.com/" target="_blank" class="hover:text-secondary transition-colors duration-200">IMT Soluciones</a></p>
+<p class="text-sm text-on-surface-variant mt-1">Pasante de Ingeniería</p>
+<p class="text-[10px] font-bold text-on-surface-variant/40 mt-3 uppercase font-mono-data">FINALIZADO // 2024</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack Section -->
+<section class="py-24 border-t border-outline-variant/30" id="tech">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div class="space-y-4">
+<p class="section-tag">COMPETENCIAS TÉCNICAS</p>
+<h2 class="text-5xl font-extrabold text-slate-deep tracking-tighter">HABILIDADES</h2>
+</div>
+<div class="hidden md:block h-px flex-grow mx-10 bg-outline-variant/30 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- 01 Automatización -->
+<div class="premium-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-slate-deep/5 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-slate-deep">precision_manufacturing</span>
+</div>
+<h4 class="text-lg font-bold mb-4 uppercase tracking-tight">Automatización &amp; Control</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">Diseño e integración de sistemas industriales y redes de comunicación.</p>
+<div class="flex flex-wrap gap-2">
+<span class="badge-skill">TIA Portal</span>
+<span class="badge-skill">SCADA</span>
+<span class="badge-skill">HMI</span>
+<span class="badge-skill">Modbus</span>
+<span class="badge-skill">MQTT</span>
+</div>
+</div>
+<!-- 02 Visión -->
+<div class="premium-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-slate-deep/5 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-slate-deep">visibility</span>
+</div>
+<h4 class="text-lg font-bold mb-4 uppercase tracking-tight">Visión Artificial &amp; IA</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">Sistemas inteligentes para análisis e inspección de calidad en tiempo real.</p>
+<div class="flex flex-wrap gap-2">
+<span class="badge-skill">OpenCV</span>
+<span class="badge-skill">Python</span>
+<span class="badge-skill">YOLO</span>
+<span class="badge-skill">TensorFlow</span>
+<span class="badge-skill">CNN</span>
+</div>
+</div>
+<!-- 03 IOT -->
+<div class="premium-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-slate-deep/5 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-slate-deep">settings_input_component</span>
+</div>
+<h4 class="text-lg font-bold mb-4 uppercase tracking-tight">Embebidos &amp; IoT</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">Implementación de hardware para adquisición de datos y monitoreo.</p>
+<div class="flex flex-wrap gap-2">
+<span class="badge-skill">ESP32</span>
+<span class="badge-skill">STM32</span>
+<span class="badge-skill">Jetson Nano</span>
+<span class="badge-skill">IoT Protocols</span>
+</div>
+</div>
+<!-- 04 Mantenimiento -->
+<div class="premium-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-slate-deep/5 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-slate-deep">engineering</span>
+</div>
+<h4 class="text-lg font-bold mb-4 uppercase tracking-tight">Mantenimiento Industrial</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">Gestión de activos, diagnóstico de fallas y puesta en marcha en campo.</p>
+<div class="flex flex-wrap gap-2">
+<span class="badge-skill">Preventivo</span>
+<span class="badge-skill">Predictivo</span>
+<span class="badge-skill">Correctivo</span>
+<span class="badge-skill">AMEF</span>
+</div>
+</div>
+<!-- 05 Datos -->
+<div class="premium-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-slate-deep/5 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-slate-deep">analytics</span>
+</div>
+<h4 class="text-lg font-bold mb-4 uppercase tracking-tight">Programación &amp; Datos</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">Análisis de información para la toma de decisiones operativas.</p>
+<div class="flex flex-wrap gap-2">
+<span class="badge-skill">Pandas</span>
+<span class="badge-skill">SQL</span>
+<span class="badge-skill">Power BI</span>
+<span class="badge-skill">NumPy</span>
+</div>
+</div>
+<!-- 06 CAD -->
+<div class="premium-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-slate-deep/5 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-slate-deep">view_in_ar</span>
+</div>
+<h4 class="text-lg font-bold mb-4 uppercase tracking-tight">Diseño CAD</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8">Modelado de precisión para soluciones mecánicas y eléctricas.</p>
+<div class="flex flex-wrap gap-2">
+<span class="badge-skill">SolidWorks</span>
+<span class="badge-skill">Inventor</span>
+<span class="badge-skill">AutoCAD</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-24 border-t border-outline-variant/30" id="projects">
+<div class="space-y-4 mb-20 text-center max-w-2xl mx-auto">
+<p class="section-tag">EJEMPLOS DE APLICACIÓN</p>
+<h2 class="text-5xl font-extrabold text-slate-deep tracking-tighter">PORTAFOLIO DE PROYECTOS</h2>
+</div>
+<div class="space-y-12">
+<!-- Project 01 -->
+<div class="premium-card p-8 lg:p-12 rounded-2xl" id="project-01">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-8">
+<p class="font-mono-data text-[10px] text-on-surface-variant/50 tracking-widest uppercase">01</p>
+<h3 class="text-4xl lg:text-5xl font-extrabold text-slate-deep uppercase leading-[1.1]">MONITOREO DE FATIGA EN TIEMPO REAL</h3>
+<p class="text-xl text-on-surface-variant leading-relaxed">Investigación aplicada en visión por computadora orientada a la detección temprana de estados críticos en operadores, con resultados validados y presentados en congreso científico internacional.</p>
+<div class="flex flex-wrap gap-3"><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">PYTHON</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">YOLO</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">OPENCV</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">ROBOFLOW</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">EDGE COMPUTING</span></div>
+<button class="inline-flex items-center gap-4 text-xs font-bold tracking-widest text-slate-deep border-b-2 border-slate-deep pb-1 hover:text-blue-700 hover:border-blue-700 transition-all uppercase font-mono-data" onclick="toggleProject('project-01')">
+<span class="" id="btn-text-01">CONTRAER DETALLES</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="lg:col-span-5">
+<div class="aspect-video bg-surface-container-low border border-outline-variant rounded-xl flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-slate-deep/10 text-8xl">visibility</span>
+</div>
+</div>
+</div>
+<!-- Expanded -->
+<div class="expand-content mt-12 pt-12 border-t border-outline-variant/30 expanded" id="project-01-expand">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div class="space-y-6"><h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">PIPELINE DE VISIÓN Y DESARROLLO</h4><div class="space-y-4"><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">01. Investigación Aplicada</p><p class="text-xs text-on-surface-variant mt-1">Proyecto de investigación científica con enfoque industrial, desarrollado bajo metodología rigurosa y validación mediante aprendizaje por transferencia (Transfer Learning).</p></div><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">02. Problema Real</p><p class="text-xs text-on-surface-variant mt-1">Aborda una problemática concreta del entorno industrial relacionada con la seguridad operativa, procesamiento local en la frontera (Edge) y la prevención de riesgos humanos en tiempo real.</p></div><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">03. Tecnología de Alto Nivel</p><p class="text-xs text-on-surface-variant mt-1">Entrenamiento de modelos de redes neuronales YOLO con conjuntos de datos estructurados en RoboFlow para el reconocimiento facial dinámico y análisis de microexpresiones.</p></div></div></div><div class="space-y-6"><h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">EVALUACIÓN DE DESEMPEÑO METODOLÓGICO</h4><div class="space-y-4"><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">04. Escalabilidad</p><p class="text-xs text-on-surface-variant mt-1">Arquitectura de software diseñada para adaptarse a distintos entornos industriales, optimizando el pipeline de visión para operar con alta eficiencia y baja latencia de procesamiento.</p></div><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">05. Aplicabilidad Real</p><p class="text-xs text-on-surface-variant mt-1">Los resultados demuestran viabilidad técnica para su integración en sistemas de monitoreo activo dentro de plantas, líneas de producción o cualquier entorno con operadores en campo.</p></div><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">06. Publicación Científica</p><p class="text-xs text-on-surface-variant mt-1">Los hallazgos, curvas de aprendizaje y metodología general se encuentran documentados para su difusión formal. Detalles de ingeniería disponibles bajo solicitud directa.</p></div></div></div></div><div class="mt-12 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Left: Facial Analysis Simulation -->
+<div class="relative aspect-video rounded-xl overflow-hidden border border-outline-variant bg-surface-container-low" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBeq2CAFG86stbcscVqPGN3Asb-71gnfvJyJKeCeXQms7PDjn4VSOEan5xvVBNncVMrqQKVR1-N01QRa_Ow2kT0W9Gq8WiXq8vz-Jepwt9G-ubnT-rCImUiSO0wXhr2WKhZUqCu7AaAVpwz_7vDG6lmMdo5Ko694-uDgnh8t2yjgX1SVSGo6-roKFBiIZBNTporAI95SwfSs-EcKyYZq86qJj4gt7_E9kBgrkfBCrJ_ozLK19E4KSBUuPIiH91UcQd73D3JNlS9Izd9&quot;); background-size: cover; background-position: center center;">
+<div class="absolute inset-0 bg-slate-deep/40"></div>
+<!-- Bounding Box -->
+<div class="absolute top-1/4 left-1/4 w-1/2 h-1/2 border-2 border-emerald-500 rounded animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.5)] flex items-center justify-center">
+<span class="absolute -top-6 left-0 bg-emerald-500 text-[10px] text-white px-2 py-0.5 font-bold font-mono-data">OPERATOR_DETECTION: FATIGUE_RISK_LOW</span>
+</div>
+<!-- Simulated Landmarks -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="grid grid-cols-5 gap-4 opacity-70">
+<div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+<div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+<div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+<div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+<div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+</div>
+</div>
+<!-- Telemetry -->
+<div class="absolute right-4 top-4 space-y-2 text-right">
+<div class="bg-black/60 backdrop-blur-sm p-2 rounded">
+<p class="font-mono-data text-[10px] text-white">AU12 (Smile): <span class="text-emerald-400">0.88</span></p>
+<p class="font-mono-data text-[10px] text-white">AU4 (Brow Lowerer): <span class="text-red-400">0.15</span></p>
+</div>
+</div>
+</div>
+<!-- Right: GIF Stream Mockup -->
+<div class="aspect-video rounded-xl border-2 border-dashed border-outline-variant bg-[#0d1117] flex flex-col items-center justify-center p-6 text-center group transition-colors hover:border-slate-deep">
+<p class="font-mono-data text-[11px] text-white/40 mb-4">[READY_FOR_GIF_STREAM... / KOSAR_APP_DEMO.GIF]</p>
+<img alt="Project GIF Placeholder" class="max-w-full h-auto opacity-50" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgcng9IjgiIGZpbGw9IiNlOGVhZWQiLz48cGF0aCBkPSJNMTcwIDEzMCBsMzAgNDAgbDIwLTE1IGw0MCA1NSBIMTQweiIgZmlsbD0iI2JkYzFjNiIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjEyMCIgcj0iMTgiIGZpbGw9IiNiZGMxYzYiLz48L3N2Zz4=">
+<span class="material-symbols-outlined text-white/10 text-6xl mt-2">movie</span>
+</div>
+</div>
+<!-- Project Footer -->
+<div class="space-y-4 text-center">
+<p class="font-mono-data text-[10px] text-on-surface-variant/60 uppercase tracking-widest">
+            [DATA_NOTE] Interfaz gráfica simulada. Mapeo preliminar de unidades de acción (FACS) en tiempo real.
+        </p>
+<a class="inline-flex items-center gap-2 px-6 py-2 border border-outline-variant rounded-full text-[11px] font-bold text-on-surface-variant hover:bg-slate-deep hover:text-white transition-all uppercase" href="https://github.com/sofiak-08/sofiak-08.github.io/blob/main/au_detector.py">
+<span class="material-symbols-outlined text-sm">folder</span>
+            [MOCKUP] Ver código fuente en GitHub
+        </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Project 02 (CAD) -->
+<div class="premium-card p-8 lg:p-12 rounded-2xl" id="project-CAD">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-8">
+<p class="font-mono-data text-[10px] text-on-surface-variant/50 tracking-widest uppercase">02</p>
+<h3 class="text-4xl lg:text-5xl font-extrabold text-slate-deep uppercase leading-[1.1]">DISEÑO Y MODELADO MECATRÓNICO DE BRAZO ROBÓTICO ARTICULADO</h3>
+<p class="text-xl text-on-surface-variant leading-relaxed">Diseño mecatrónico de un manipulador robótico articulado de 4 grados de libertad, desarrollado mediante metodología de selección de conceptos y modelado CAD parametrizado para tareas de pick and place en entornos colaborativos.</p>
+<div class="flex flex-wrap gap-3"><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">SOLIDWORKS</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">INVENTOR</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">AUTOCAD</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">CAD PARAMÉTRICO</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">FEA</span></div>
+<button class="inline-flex items-center gap-4 text-xs font-bold tracking-widest text-slate-deep border-b-2 border-slate-deep pb-1 hover:text-blue-700 hover:border-blue-700 transition-all uppercase font-mono-data" onclick="toggleProject('project-CAD')">
+<span class="" id="btn-text-CAD">VER INGENIERÍA DE DISEÑO CAD</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="lg:col-span-5">
+<div class="aspect-video bg-surface-container-low border border-outline-variant rounded-xl flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-slate-deep/10 text-8xl">view_in_ar</span>
+</div>
+</div>
+</div>
+<div class="expand-content mt-12 pt-12 border-t border-outline-variant/30" id="project-CAD-expand"><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div class="space-y-6"><h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">INGENIERÍA Y SELECCIÓN</h4><div class="space-y-4"><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">01. Definición de Requerimientos</p><p class="text-xs text-on-surface-variant mt-1">Se establecieron especificaciones técnicas del sistema considerando grados de libertad, capacidad de carga, alcance del área de trabajo, repetitividad y compatibilidad con otros sistemas de la celda colaborativa.</p></div><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">02. Generación y Evaluación de Conceptos</p><p class="text-xs text-on-surface-variant mt-1">Se desarrollaron tres conceptos de manipulador: lineal de 3 GDL, articulado de 4 GDL y articulado con base lineal. Cada concepto fue evaluado mediante una matriz de selección ponderada con criterios como facilidad de implementación, alcance, adaptabilidad y costo.</p></div><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">03. Concepto Seleccionado</p><p class="text-xs text-on-surface-variant mt-1">El manipulador articulado de 4 GDL fue seleccionado por su equilibrio entre flexibilidad operativa, precisión de posicionamiento y facilidad de implementación dentro del entorno colaborativo.</p></div></div></div><div class="space-y-6"><h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">DOCUMENTACIÓN TÉCNICA</h4><div class="space-y-4"><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">04. Modelado CAD Parametrizado</p><p class="text-xs text-on-surface-variant mt-1">Desarrollo del diseño a detalle del brazo robótico seleccionado, incluyendo ensamble de componentes, tolerancias geométricas y alojamiento modular para servomotores y tarjeta de control.</p></div><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">05. Integración con el Sistema</p><p class="text-xs text-on-surface-variant mt-1">El diseño garantiza compatibilidad directa con la banda transportadora y el robot móvil de la celda, permitiendo ciclos fluidos de transferencia de objetos sin errores acumulativos.</p></div><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">06. Escalabilidad del Diseño</p><p class="text-xs text-on-surface-variant mt-1">La arquitectura modular del manipulador permite futuras integraciones con otras celdas robotizadas, visión artificial y sistemas de identificación, ampliando las capacidades del sistema colaborativo.</p></div></div></div></div><div class="mt-12 pt-12 border-t border-outline-variant/30 space-y-6">
+<h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data"><div><span class="" style="letter-spacing: 0.1em;">VISUALIZACIÓN CAD INTERACTIVA</span></div></h4>
+<div class="relative aspect-video bg-[#090d12] rounded-xl border border-white/10 overflow-hidden shadow-2xl group">
+<!-- Top-left: Blinking status -->
+<div class="absolute top-6 left-6 z-20 flex items-center gap-2">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="font-mono-data text-[10px] text-emerald-400 tracking-tighter">[STATUS: 3D_RENDER_ACTIVE]</span>
+</div>
+<!-- Top-right: XYZ Axis -->
+<div class="absolute top-6 right-6 z-20 flex flex-col items-end opacity-60">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[9px] font-mono-data text-white/40">X-AXIS</span>
+<div class="w-8 h-0.5 bg-red-500"></div>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[9px] font-mono-data text-white/40">Y-AXIS</span>
+<div class="w-8 h-0.5 bg-green-500"></div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[9px] font-mono-data text-white/40">Z-AXIS</span>
+<div class="w-8 h-0.5 bg-blue-500"></div>
+</div>
+</div>
+<!-- 3D Viewport Placeholder -->
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<!-- src="URL_DE_CLOUDINARY_3D_MODEL" -->
+<span class="material-symbols-outlined text-white/5 text-9xl">deployed_code</span>
+<p class="font-mono-data text-[11px] text-white/20 uppercase tracking-widest mt-4">[AWAITING_CLOUDINARY_STREAM]</p>
+</div>
+<!-- Bottom-left: Floating Card -->
+<div class="absolute bottom-6 left-6 z-20 bg-slate-deep/80 backdrop-blur-md p-4 rounded-lg border border-white/10">
+<p class="text-white font-bold text-xs uppercase tracking-tight">
+                📐 Grados de Libertad: 3 DoF (Rotacional)
+            </p>
+</div>
+</div>
+<!-- 3 DoF Control Panel -->
+<div class="flex flex-wrap items-center gap-3">
+<button class="px-4 py-2 bg-slate-deep border border-white/10 rounded text-[10px] font-bold text-white/60 hover:text-white hover:border-white/30 transition-all font-mono-data uppercase">
+            🔄 [ROT_X] Pitch
+        </button>
+<button class="px-4 py-2 bg-slate-deep border border-white/10 rounded text-[10px] font-bold text-white/60 hover:text-white hover:border-white/30 transition-all font-mono-data uppercase">
+            🔄 [ROT_Y] Yaw
+        </button>
+<button class="px-4 py-2 bg-slate-deep border border-white/10 rounded text-[10px] font-bold text-white/60 hover:text-white hover:border-white/30 transition-all font-mono-data uppercase">
+            🔄 [ROT_Z] Roll
+        </button>
+<button class="px-6 py-2 bg-blue-600 rounded text-[10px] font-bold text-white hover:bg-blue-500 transition-all font-mono-data uppercase shadow-lg shadow-blue-600/20">
+            🔍 Reiniciar Cámara
+        </button>
+</div>
+<!-- Technical Metadata Bar -->
+<div class="pt-4 border-t border-outline-variant/10">
+<p class="font-mono-data text-[10px] text-on-surface-variant/40 tracking-tight">
+            [FILE_INFO] Source: Cloudinary Asset Pipeline // Format: GLTF/GLB Embedded Mesh // Geometry: High-Density CAD Design.
+        </p>
+</div>
+</div></div>
+</div>
+<!-- Project 03 (Management) -->
+<div class="premium-card p-8 lg:p-12 rounded-2xl" id="project-03">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-8">
+<p class="font-mono-data text-[10px] text-on-surface-variant/50 tracking-widest uppercase">03</p>
+<h3 class="text-4xl lg:text-5xl font-extrabold text-slate-deep uppercase leading-[1.1]">PLANIFICACIÓN DE LA MANUFACTURA Y OPTIMIZACIÓN DE REQUERIMIENTOS</h3>
+<p class="text-xl text-on-surface-variant leading-relaxed">Desarrollo de un modelo analítico en Excel para la planificación y control de la manufactura, estructurando desde la lista de materiales hasta el cálculo de requerimientos y sincronización de la producción.</p>
+<div class="flex flex-wrap gap-3"><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">EXCEL</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">MRP</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">MPS</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">BOM</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">PRODUCTION MANAGEMENT</span></div>
+<button class="inline-flex items-center gap-4 text-xs font-bold tracking-widest text-slate-deep border-b-2 border-slate-deep pb-1 hover:text-blue-700 hover:border-blue-700 transition-all uppercase font-mono-data" onclick="toggleProject('project-03')">
+<span class="" id="btn-text-03">VER DETALLES DE GESTIÓN Y KPIS</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="lg:col-span-5">
+<div class="aspect-video bg-surface-container-low border border-outline-variant rounded-xl flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-slate-deep/10 text-8xl">dashboard</span>
+</div>
+</div>
+</div>
+<div class="expand-content mt-12 pt-12 border-t border-outline-variant/30" id="project-03-expand">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="space-y-6">
+<h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">INGENIERÍA DE PROCESOS Y ARCHIVOS DE TRABAJO</h4>
+<div class="space-y-4"><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">01. Arquitectura de Datos Base</p><p class="text-xs text-on-surface-variant mt-1">Estructuración sistemática de la lista de materiales (BOM) y codificación unificada de la lista maestra de maquinaria para el control de activos y trazabilidad en planta.</p></div><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">02. Modelado de Rutas de Fabricación</p><p class="text-xs text-on-surface-variant mt-1">Definición del flujo secuencial y hojas de ruta detalladas para cada componente, subensamble y producto terminado dentro del entorno de manufactura.</p></div><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">03. Procesamiento Analítico</p><p class="text-xs text-on-surface-variant mt-1">Implementación de lógicas dinámicas en tablas Excel para la consolidación de datos orientados al cálculo del Lead Time de fabricación por cada nivel de ensamble, costo de producto y nivel de ventas.</p></div></div>
+</div>
+<div class="space-y-6">
+<h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">PLANIFICACIÓN OPERATIVA Y CONTROL DE PRODUCCIÓN</h4>
+<div class="space-y-4"><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">04. Plan Maestro de Producción (MPS)</p><p class="text-xs text-on-surface-variant mt-1">Diseño del plan maestro para alinear los requerimientos del mercado con la disponibilidad operativa real de los recursos de manufactura.</p></div><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">05. Programa de Requerimiento de Materiales (MRP)</p><p class="text-xs text-on-surface-variant mt-1">Implementación de la lógica MRP para la proyección automatizada de órdenes de compra y producción, minimizando el exceso de inventario en almacén.</p></div><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">06. Escalabilidad del Modelo</p><p class="text-xs text-on-surface-variant mt-1">La estructura analítica desarrollada es completamente escalable y simula la lógica de control de un software ERP industrial, adaptable a entornos de mayor complejidad operativa.</p></div></div>
+</div>
+<div class="col-span-1 md:col-span-2 mt-8 space-y-6"><h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">PIPELINE DE PRODUCCIÓN</h4><div class="w-full bg-[#0d1117] border border-white/10 rounded-xl p-8 flex flex-col items-center justify-center relative overflow-hidden group"><div class="absolute inset-0 opacity-5 precision-grid pointer-events-none"></div><div class="relative z-10 text-center"><div class="mb-6 flex justify-center"><span class="material-symbols-outlined text-white/20 text-5xl">table_chart</span></div><a class="inline-flex items-center gap-3 px-8 py-3 bg-slate-deep border border-white/20 text-white text-[11px] font-bold tracking-[0.15em] uppercase rounded-lg hover:bg-white hover:text-slate-deep transition-all duration-300 font-mono-data shadow-lg shadow-black/50" href="https://docs.google.com/spreadsheets/d/1X8Uy0ArCjh0LL9wZCEat6yTvRIvmtlBm/edit?usp=sharing&amp;ouid=116832487722051006484&amp;rtpof=true&amp;sd=true" rel="noopener noreferrer" target="_blank"><span class="">VER MODELO MRP/MPS</span><span class="material-symbols-outlined text-sm">open_in_new</span></a><p class="mt-4 text-[9px] font-mono-data text-white/30 tracking-widest uppercase">Consolidación de Datos · Lógica MRP v2.4 · Arquitectura de Precisión</p></div></div></div></div>
+</div>
+</div><div class="premium-card p-8 lg:p-12 rounded-2xl" id="project-04">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-8">
+<p class="font-mono-data text-[10px] text-on-surface-variant/50 tracking-widest uppercase">04</p>
+<h3 class="text-4xl lg:text-5xl font-extrabold text-slate-deep uppercase leading-[1.1]">PLAN DE MANTENIMIENTO INDUSTRIAL Y CONFIABILIDAD OPERATIVA</h3>
+<p class="text-xl text-on-surface-variant leading-relaxed">Implementación de un sistema CMMS/GMAO en Notion para la gestión centralizada del mantenimiento predictivo, preventivo y correctivo de una línea de ensamble industrial, integrando telemetría de sensores, automatización de alertas y cálculo de indicadores de confiabilidad.</p>
+<div class="flex flex-wrap gap-3"><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">NOTION</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">CMMS</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">GMAO</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">MTTR</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">MANTENIMIENTO PREDICTIVO</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">TELEMETRÍA</span><span class="text-[10px] font-bold px-4 py-2 border border-outline-variant rounded uppercase font-mono-data">KPI</span></div>
+<button class="inline-flex items-center gap-4 text-xs font-bold tracking-widest text-slate-deep border-b-2 border-slate-deep pb-1 hover:text-blue-700 hover:border-blue-700 transition-all uppercase font-mono-data" onclick="toggleProject('project-04')">
+<span class="" id="btn-text-04">CONTRAER DETALLES</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="lg:col-span-5">
+<div class="aspect-video bg-surface-container-low border border-outline-variant rounded-xl flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-slate-deep/10 text-8xl">visibility</span>
+</div>
+</div>
+</div>
+<div class="expand-content mt-12 pt-12 border-t border-outline-variant/30 expanded" id="project-04-expand"><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div class="space-y-6"><h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">INGENIERÍA DE MANTENIMIENTO Y CONFIABILIDAD OPERATIVA</h4><div class="space-y-4"><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">Arquitectura de Datos Relacional</p><p class="text-xs text-on-surface-variant mt-1">Diseño de dos bases de datos vinculadas bidireccionalmente en Notion: registro maestro de activos y órdenes de trabajo, centralizando el ciclo de vida completo de cada equipo de la planta.</p></div><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">Automatización de Alertas por Telemetría</p><p class="text-xs text-on-surface-variant mt-1">Implementación de fórmulas lógicas para el seguimiento continuo de variables críticas como vibración, temperatura y consumo eléctrico, generando alertas automáticas en tres niveles antes de que ocurra la falla.</p></div><div class="p-4 border-l-2 border-slate-deep bg-surface-container-low"><p class="font-bold text-sm uppercase">Cálculo Automático de MTTR</p><p class="text-xs text-on-surface-variant mt-1">Configuración de Rollups con filtros dobles para calcular el tiempo medio de reparación por activo, considerando exclusivamente las intervenciones correctivas clausuradas y actualizándose en tiempo real con cada nueva orden registrada.</p></div></div></div><div class="space-y-6"><h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">ANALÍTICA OPERATIVA Y GESTIÓN DE INTERVENCIONES</h4><div class="space-y-4"><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">Plan de Mantenimiento Dual</p><p class="text-xs text-on-surface-variant mt-1">Estructuración de rutinas preventivas programadas y detección predictiva de anomalías en paralelo, reduciendo los fallos no planificados en un 70% y el costo promedio por intervención de USD 1,100 a USD 340.</p></div><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">Dashboard de Control KPI</p><p class="text-xs text-on-surface-variant mt-1">Diseño de un panel central con métricas de disponibilidad operativa, conteo de alertas activas y estado en tiempo real de cada activo, accesible desde vistas vinculadas independientes para cada rol del equipo técnico.</p></div><div class="p-4 border border-outline-variant rounded bg-white"><p class="font-bold text-sm uppercase">Escalabilidad del Sistema</p><p class="text-xs text-on-surface-variant mt-1">La arquitectura implementada es completamente escalable desde los 5 activos del caso de estudio hasta entornos con 200 equipos y múltiples líneas de producción, integrándose con herramientas externas como Looker Studio, Python y Streamlit para analítica avanzada sin modificar la estructura base.</p></div></div></div></div><div class="col-span-1 md:col-span-2 mt-8 space-y-6">
+<h4 class="text-slate-deep font-bold tracking-widest text-[11px] uppercase font-mono-data">EXPLORAR SISTEMA DE GESTIÓN</h4>
+<div class="w-full bg-[#0d1117] border border-white/10 rounded-xl p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute inset-0 opacity-5 precision-grid pointer-events-none"></div>
+<div class="relative z-10 text-center">
+<div class="mb-6 flex justify-center">
+<span class="material-symbols-outlined text-white/20 text-5xl">analytics</span>
+</div>
+<a class="inline-flex items-center gap-3 px-8 py-3 bg-slate-deep border border-white/20 text-white text-[11px] font-bold tracking-[0.15em] uppercase rounded-lg hover:bg-white hover:text-slate-deep transition-all duration-300 font-mono-data shadow-lg shadow-black/50" href="https://www.notion.so/Plan-de-Mantenimiento-Industrial-36b0da33eaee80d3885ce0d8bc33aad3?source=copy_link" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+<span class="">ABRIR ENTORNO CMMS</span>
+</a>
+<p class="mt-4 text-[9px] font-mono-data text-white/30 tracking-widest uppercase">
+        Gestión de Activos · Telemetría Predictiva · Confiabilidad Operativa
+      </p>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant/20 text-center">
+<p class="font-mono-data text-[10px] text-on-surface-variant/40 tracking-[0.1em] uppercase leading-relaxed max-w-2xl mx-auto">
+        Los proyectos presentados son ejemplos representativos de mis capacidades técnicas. Los proyectos desarrollados en entornos profesionales se mantienen bajo estricta confidencialidad.
+    </p>
+</div></section>
+<!-- Footer / Contact -->
+<footer class="py-24 border-t border-outline-variant/30" id="footer">
+<div class="bg-slate-deep text-white p-12 lg:p-20 rounded-3xl relative overflow-hidden">
+<!-- Subtle pattern overlay -->
+<div class="absolute inset-0 opacity-10 precision-grid pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
+<div class="lg:col-span-7 space-y-10">
+<p class="font-mono-data text-[10px] text-white/50 tracking-widest uppercase">CONTACTO</p>
+<h2 class="text-5xl lg:text-7xl font-extrabold uppercase leading-tight tracking-tighter">
+                        CONSTRUYAMOS LA INDUSTRIA DEL FUTURO.
+                    </h2>
+<p class="text-xl text-white/70 max-w-lg leading-relaxed">
+                        Lista para asumir nuevos retos y sumarme a equipos que impulsen proyectos de automatización, ingeniería mecatrónica y visión artificial donde pueda aportar soluciones de impacto real.
+                    </p>
+<div class="flex items-center gap-4 pt-6">
+<span class="material-symbols-outlined text-white/40">memory</span>
+<p class="text-[10px] font-bold tracking-widest uppercase text-white/40 font-mono-data">© 2026 SOFÍA CHICAIZA · PORTAFOLIO DE INGENIERÍA</p>
+</div>
+</div>
+<div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4 self-center">
+<a class="flex flex-col gap-6 p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-all rounded-2xl group" href="https://www.linkedin.com/in/sofia-chicaiza/" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform">hub</span>
+<div>
+<p class="text-[10px] font-mono-data text-white/40 mb-1 uppercase tracking-widest">RED PROFESIONAL</p>
+<p class="font-bold text-lg">LINKEDIN</p>
+</div>
+</a>
+<a class="flex flex-col gap-6 p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-all rounded-2xl group" href="https://github.com/sofiak-08/sofiak-08.github.io.git" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform">terminal</span>
+<div>
+<p class="text-[10px] font-mono-data text-white/40 mb-1 uppercase tracking-widest">CÓDIGO Y DOCS</p>
+<p class="font-bold text-lg">GITHUB</p></div></a></div></div></div></footer></main>
+
+
+
+
+
+
+
+
+</body></html>
